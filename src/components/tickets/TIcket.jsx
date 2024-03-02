@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllEmployees } from "../../services/employeeService.jsx";
+import { getAllEmployees } from "../../services/EmployeeService.jsx";
 
 export const Ticket = ({ ticket }) => {
   const [employees, setEmployees] = useState([]);
@@ -33,6 +33,7 @@ export const Ticket = ({ ticket }) => {
           <div className="ticket-info">emergency</div>
           <div>{ticket.emergency ? "yes" : "no"}</div>
         </div>
+        <div className="btn-container"></div>
       </footer>
     </section>
   );

@@ -43,7 +43,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label>Specialty:</label>
           <input
             type="text"
-            value={employee.specialty}
+            value={employee.specialty ? employee.specialty : ""}
             onChange={(event) => {
               const copy = { ...employee };
               copy.specialty = event.target.value;
@@ -59,7 +59,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <label>Hourly Rate:</label>
           <input
             type="number"
-            value={employee.rate}
+            value={employee.rate ? employee.rate : ""}
             onChange={(event) => {
               const copy = { ...employee };
               copy.rate = event.target.value;

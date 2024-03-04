@@ -29,7 +29,9 @@ export const EmployeeDetails = () => {
         {employee.rate}
       </div>
       <div>
-        <span>Currently working on {employee.employeeTickets?.length}</span>
+        <span>
+          Currently working on {employee.employeeTickets?.length} tickets
+        </span>
       </div>
     </section>
   );

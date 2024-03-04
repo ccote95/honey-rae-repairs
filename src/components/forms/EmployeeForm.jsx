@@ -12,6 +12,18 @@ export const EmployeeForm = ({ currentUser }) => {
     });
   }, [currentUser]);
 
+  const handleSave = (event) => {
+    event.preventDefault();
+    console.log("clicked");
+
+    const editedEmployee = {
+      id: employee.id,
+      specialty: employee.specialty,
+      rate: employee.rate,
+      userId: employee.userId,
+    };
+  };
+
   return (
     <form className="profile">
       <h2>Update Profile</h2>
@@ -49,7 +61,9 @@ export const EmployeeForm = ({ currentUser }) => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <button className="form-btn btn-primary">Save Profile</button>
+          <button className="form-btn btn-primary" onClick={handleSave}>
+            Save Profile
+          </button>
         </div>
       </fieldset>
     </form>

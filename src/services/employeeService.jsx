@@ -10,8 +10,8 @@ export const getEmployeeByUserId = (userId) => {
   ).then((res) => res.json());
 };
 
-export const updateEmployee = (employee) => {
-  return fetch(`http://localhost:8088/employees/${employee.id}`, {
+export const updateEmployee = async (employee) => {
+  return await fetch(`http://localhost:8088/employees/${employee.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

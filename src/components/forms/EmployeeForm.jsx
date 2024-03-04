@@ -35,6 +35,12 @@ export const EmployeeForm = ({ currentUser }) => {
     });
   };
 
+  const handleInputChange = (event) => {
+    const stateCopy = { ...employee };
+    stateCopy[event.target.name] = event.target.value;
+    setEmployee(stateCopy);
+  };
+
   return (
     <form className="profile">
       <h2>Update Profile</h2>
@@ -42,13 +48,10 @@ export const EmployeeForm = ({ currentUser }) => {
         <div className="form-group">
           <label>Specialty:</label>
           <input
+            name="specialty"
             type="text"
             value={employee.specialty ? employee.specialty : ""}
-            onChange={(event) => {
-              const copy = { ...employee };
-              copy.specialty = event.target.value;
-              setEmployee(copy);
-            }}
+            onChange={handleInputChange}
             required
             className="form-control"
           />
@@ -58,13 +61,10 @@ export const EmployeeForm = ({ currentUser }) => {
         <div className="form-group">
           <label>Hourly Rate:</label>
           <input
+            name="rate"
             type="number"
             value={employee.rate ? employee.rate : ""}
-            onChange={(event) => {
-              const copy = { ...employee };
-              copy.rate = event.target.value;
-              setEmployee(copy);
-            }}
+            onChange={handleInputChange}
             required
             className="form-control"
           />

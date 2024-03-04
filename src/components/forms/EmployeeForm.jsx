@@ -13,9 +13,11 @@ export const EmployeeForm = ({ currentUser }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("current user", currentUser);
     getEmployeeByUserId(currentUser.id).then((data) => {
-      const empolyeeObj = data[0];
-      setEmployee(empolyeeObj);
+      const employeeObj = data[0];
+      setEmployee(employeeObj);
+      console.log("employee object", employeeObj);
     });
   }, [currentUser]);
 
@@ -50,7 +52,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <input
             name="specialty"
             type="text"
-            value={employee.specialty ? employee.specialty : ""}
+            value={employee?.specialty ? employee.specialty : ""}
             onChange={handleInputChange}
             required
             className="form-control"
@@ -63,7 +65,7 @@ export const EmployeeForm = ({ currentUser }) => {
           <input
             name="rate"
             type="number"
-            value={employee.rate ? employee.rate : ""}
+            value={employee?.rate ? employee.rate : ""}
             onChange={handleInputChange}
             required
             className="form-control"

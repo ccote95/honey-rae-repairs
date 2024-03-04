@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import "./Form.css";
-import { getEmployeeByUserId } from "../../services/EmployeeService.jsx";
+import {
+  getEmployeeByUserId,
+  updateEmployee,
+} from "../../services/EmployeeService.jsx";
+
+import { useNavigate } from "react-router-dom";
 
 export const EmployeeForm = ({ currentUser }) => {
   const [employee, setEmployee] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getEmployeeByUserId(currentUser.id).then((data) => {
@@ -22,6 +29,10 @@ export const EmployeeForm = ({ currentUser }) => {
       rate: employee.rate,
       userId: employee.userId,
     };
+
+    updateEmployee(editedEmployee).then(() => {
+      navigate(`/employees/${currentUser.id}`);
+    });
   };
 
   return (

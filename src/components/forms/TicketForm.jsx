@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./Form.css";
 
 export const TicketForm = () => {
+  const [ticket, setTicket] = useState({});
+
   return (
     <form>
       <h2>New Service Ticket</h2>
@@ -11,6 +14,11 @@ export const TicketForm = () => {
             type="text"
             className="form-control"
             placeholder="Brief description of the problem"
+            onChange={(event) => {
+              const ticketCopy = { ...ticket };
+              ticketCopy.description = event.target.value;
+              setTicket(ticketCopy);
+            }}
           />
         </div>
       </fieldset>

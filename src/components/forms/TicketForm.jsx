@@ -2,7 +2,10 @@ import { useState } from "react";
 import "./Form.css";
 
 export const TicketForm = () => {
-  const [ticket, setTicket] = useState({});
+  const [ticket, setTicket] = useState({
+    description: "",
+    emergency: false,
+  });
 
   return (
     <form>
@@ -26,7 +29,14 @@ export const TicketForm = () => {
         <div className="form-group">
           <label>
             Emergency
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={(event) => {
+                const ticketCopy = { ...ticket };
+                ticketCopy.emergency = event.target.checked;
+                setTicket(ticketCopy);
+              }}
+            />
           </label>
         </div>
       </fieldset>

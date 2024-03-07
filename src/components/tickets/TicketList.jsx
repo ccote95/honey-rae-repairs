@@ -25,7 +25,7 @@ export const TicketList = ({ currentUser }) => {
 
   useEffect(() => {
     getAndSetTickets();
-  }, []); // runs on initial render of component
+  }, [currentUser]); // runs on initial render of component and when currentUser state changes
   useEffect(() => {
     if (showEmergencyOnly) {
       const emergencyTickets = allTickets.filter(

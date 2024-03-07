@@ -1,5 +1,5 @@
 import { Route, Outlet, Routes } from "react-router-dom";
-import { NavBar } from "../components/nav/NavBar.jsx";
+import { NavBar } from "../components/nav/EmployeeNavBar.jsx";
 import { Welcome } from "../components/welcome/Welcome.jsx";
 import { EmployeeDetails } from "../components/employees/EmployeeDetails.jsx";
 import { EmployeesList } from "../components/employees/EmployeesList.jsx";

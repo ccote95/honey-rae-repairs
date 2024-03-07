@@ -1,3 +1,19 @@
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Welcome } from "../components/welcome/Welcome.jsx";
+
 export const CustomerViews = () => {
-  return <>Customer Views</>;
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <Outlet />
+          </>
+        }
+      >
+        <Route index element={<Welcome />} />
+      </Route>
+    </Routes>
+  );
 };

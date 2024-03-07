@@ -6,7 +6,7 @@ import { EmployeeDetails } from "../components/employees/EmployeeDetails.jsx";
 import { CustomerList } from "../components/customers/CustomersList.jsx";
 import { CustomerDetails } from "../components/customers/CustomerDetails.jsx";
 import { EmployeeForm } from "../components/forms/EmployeeForm.jsx";
-import { NavBar } from "../components/nav/NavBar.jsx";
+import { EMployeeNavBar } from "../components/nav/EmployeeNavBar.jsx";
 
 export const EmployeeViews = ({ currentUser }) => {
   return (
@@ -15,7 +15,7 @@ export const EmployeeViews = ({ currentUser }) => {
         path="/"
         element={
           <>
-            <NavBar />
+            <EMployeeNavBar />
 
             <Outlet />
           </>

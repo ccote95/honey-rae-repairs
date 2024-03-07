@@ -63,12 +63,10 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
           <div>{ticket.emergency ? "yes" : "no"}</div>
         </div>
         <div className="btn-container">
-          {currentUser.isStaff && !assignedEmployee ? (
+          {currentUser.isStaff && !assignedEmployee && (
             <button className="btn btn-secondary" onClick={handleClaim}>
               Claim
             </button>
-          ) : (
-            ""
           )}
           {assignedEmployee?.userId === currentUser.id &&
           !ticket.dateCompleted ? (
@@ -77,6 +75,9 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
             </button>
           ) : (
             ""
+          )}
+          {!currentUser.isStaff && (
+            <button className="btn btn-warning">Delete</button>
           )}
         </div>
       </footer>

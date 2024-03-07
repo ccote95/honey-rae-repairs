@@ -27,3 +27,9 @@ export const upDateTicket = (ticket) => {
     }
   );
 };
+
+export const deleteTicket = (ticketId) => {
+  return fetch(`http://localhost:8088/serviceTickets/${ticketId}`, {
+    method: "DELETE",
+  });
+};

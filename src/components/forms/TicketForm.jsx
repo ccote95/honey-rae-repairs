@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Form.css";
-import { createTicket } from "../../services/ticketService.jsx";
-import { useNavigate } from "react-router-dom";
+import {
+  createTicket,
+  getTicketById,
+  upDateTicket,
+} from "../../services/ticketService.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const TicketForm = ({ currentUser }) => {
   const [ticket, setTicket] = useState({
@@ -9,10 +13,24 @@ export const TicketForm = ({ currentUser }) => {
     emergency: false,
   });
   const navigate = useNavigate();
+  const { ticketId } = useParams();
+
+  useEffect(() => {
+    if (ticketId) {
+      getTicketById(ticketId).then((ticketObj) => {
+        setTicket(ticketObj);
+      });
+    }
+  }, []);
 
   const handleSave = (event) => {
     event.preventDefault();
-    if (ticket.description) {
+    if (ticketId && ticket.description) {
+      const updatedTicket = { ...ticket };
+      upDateTicket(updatedTicket).then(() => {
+        navigate("/tickets");
+      });
+    } else if (ticket.description) {
       const newTicketObject = {
         userId: currentUser.id,
         description: ticket.description,
@@ -35,6 +53,7 @@ export const TicketForm = ({ currentUser }) => {
           <label>Description</label>
           <input
             type="text"
+            value={ticket.description}
             className="form-control"
             placeholder="Brief description of the problem"
             onChange={(event) => {
@@ -51,6 +70,9 @@ export const TicketForm = ({ currentUser }) => {
             Emergency
             <input
               type="checkbox"
+              checked={
+                ticketId ? ticket.emergency : false
+              } /** this is checking if ticketId exists. if it does  */
               onChange={(event) => {
                 const ticketCopy = { ...ticket };
                 ticketCopy.emergency = event.target.checked;

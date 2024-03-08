@@ -60,7 +60,7 @@ export const TicketList = ({ currentUser }) => {
     <div className="tickets-container">
       <h2>Tickets</h2>
       <TicketFilterBar
-        setShowOpenOnly={setShowEmergencyOnly}
+        setShowOpenOnly={setShowOpenOnly}
         currentUser={currentUser}
         setShowEmergencyOnly={setShowEmergencyOnly}
         setSearchTerm={setSearchTerm}

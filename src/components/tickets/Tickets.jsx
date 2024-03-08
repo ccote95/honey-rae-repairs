@@ -91,6 +91,9 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
               Delete
             </button>
           )}
+          {!currentUser.isStaff && (
+            <button className="btn btn-secondary">Edit Ticket</button>
+          )}
         </div>
       </footer>
     </section>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Form.css";
-import { createTicket } from "../../services/ticketService.jsx";
+import { createTicket, getTicketById } from "../../services/ticketService.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const TicketForm = ({ currentUser }) => {
@@ -13,6 +13,9 @@ export const TicketForm = ({ currentUser }) => {
 
   useEffect(() => {
     if (ticketId) {
+      getTicketById(ticketId).then((ticketObj) => {
+        setTicket(ticketObj);
+      });
     } else {
     }
   }, []);

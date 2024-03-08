@@ -23,6 +23,7 @@ export const CustomerViews = ({ currentUser }) => {
             path="create"
             element={<TicketForm currentUser={currentUser} />}
           />
+          <Route path=":ticketId" element={<TicketForm />} />
         </Route>
       </Route>
     </Routes>

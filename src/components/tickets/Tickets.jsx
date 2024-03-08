@@ -5,11 +5,13 @@ import {
   deleteTicket,
   upDateTicket,
 } from "../../services/ticketService.jsx";
-import { TicketList } from "./TicketList.jsx";
+
+import { useNavigate } from "react-router-dom";
 
 export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
   const [employees, setEmployees] = useState([]);
   const [assignedEmployee, setAssignedEmployee] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllEmployees().then((employeesArray) => {
@@ -92,7 +94,14 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
             </button>
           )}
           {!currentUser.isStaff && (
-            <button className="btn btn-secondary">Edit Ticket</button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                navigate(`/tickets/${ticket.id}`);
+              }}
+            >
+              Edit Ticket
+            </button>
           )}
         </div>
       </footer>

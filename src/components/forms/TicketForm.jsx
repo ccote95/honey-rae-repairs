@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Form.css";
 import { createTicket } from "../../services/ticketService.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const TicketForm = ({ currentUser }) => {
   const [ticket, setTicket] = useState({
@@ -9,6 +9,13 @@ export const TicketForm = ({ currentUser }) => {
     emergency: false,
   });
   const navigate = useNavigate();
+  const ticketId = useParams();
+
+  useEffect(() => {
+    if (ticketId) {
+    } else {
+    }
+  }, []);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -35,6 +42,7 @@ export const TicketForm = ({ currentUser }) => {
           <label>Description</label>
           <input
             type="text"
+            value={ticket.description}
             className="form-control"
             placeholder="Brief description of the problem"
             onChange={(event) => {
